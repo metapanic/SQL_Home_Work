@@ -99,3 +99,14 @@ WHERE    I='D' or I='E' or
 6.5
 
 SELECT MAX(salary) FROM employees
+
+
+
+
+UPDATE:
+
+ALTER TABLE employees
+ADD CONSTRAINT FK_Department FOREIGN KEY (department_id)
+      REFERENCES departments (ID)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
