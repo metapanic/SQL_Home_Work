@@ -1,0 +1,101 @@
+1
+
+CREATE TABLE employees
+(
+    id SERIAL PRIMARY KEY,
+    firstname VARCHAR(30),
+    lastname VARCHAR(30),
+    dateofbirth DATE,
+    start_work DATE,
+    job_title VARCHAR,
+    employee_level CHAR(6),
+    salary MONEY,
+    department_id INT,
+    drivers_license BOOLEAN    
+)
+
+INSERT INTO employees (
+firstname, lastname, dateofbirth, start_work, job_title, employee_level, salary, department_id, drivers_license
+)
+ VALUES
+('Ivan','Ivanov','1984-09-11','2012-05-23','Head of IT Department','lead','106000','1','t'),
+('Anton','Antonov','1997-03-17','2019-12-21','JUN','jun','35000','1','f'),
+('Vera', 'Pavlova', '1977-04-07','2016-02-01','Chief Accountant','senior','85000','2','t'),
+('Nina','Semenova','1982-06-30','2013-02-13','Accountant','middle','60000','2','t'),
+('Petr','Petrov','1987-02-28','2014-08-09','MID','middle','65000','1','t')
+
+2
+
+CREATE TABLE departments
+(
+    id SERIAL PRIMARY KEY,
+    department VARCHAR,
+    NameOfHead VARCHAR,
+    employees INT,
+)
+
+INSERT INTO departments (department, NameOfHead, employees)
+ VALUES
+('IT','Ivan Ivanov','3'),
+('Finance','Vera Pavlova','2')
+
+3
+
+CREATE TABLE grade
+(
+    id SERIAL PRIMARY KEY,
+    I CHAR,
+    II CHAR,
+    III CHAR,
+    IV CHAR	
+)
+
+INSERT INTO grade (I, II, III, IV)
+VALUES ('B','A','A','A'),
+	(' C','B','D','B'),
+	('A','A','A','C'),
+        ('A','A','B','E').
+	('A','A','B','B')
+
+4
+
+INSERT INTO departments (department, nameofhead, 
+						 employees)
+VALUES ('Data Analytics', 'Sergey Sergeev', '3')
+
+insert into employees (
+	firstname, lastname, dateofbirth,
+					   start_work, job_title, 
+					   employee_level,
+					   salary, department_id, 
+					   drivers_license
+) 
+VALUES
+('Sergey','Sergeev','1985-10-10','2022-11-01','Head of Data Analytics','lead','102000','3','t'),
+('Oleg','Filatov','1986-01-12','2022-11-01','Mid','middle','90000','3','t'),
+('Anatoly','Nikitin','1990-07-22','2022-11-01','JUN','jun','68000','3','t')
+
+6.1.
+
+ SELECT id, firstname, lastname, (CURRENT_DATE-start_work)/365 as стаж_полных_лет FROM employees
+
+6.2
+
+SELECT id, firstname, lastname, (CURRENT_DATE-start_work)/365 as стаж_полных_лет 
+FROM employees WHERE id<=3
+
+6.3
+
+SELECT id FROM employees WHERE drivers_license=TRUE
+
+6.4
+
+SELECT id FROM grade
+WHERE    I='D' or I='E' or
+		   			   II='D' or II='E' or
+	         							III='D' or III='E' or
+		      										          IV='D' or IV='E'
+
+6.5
+
+SELECT MAX(salary) FROM employees
