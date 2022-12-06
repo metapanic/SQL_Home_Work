@@ -110,3 +110,9 @@ ADD CONSTRAINT FK_Department FOREIGN KEY (department_id)
       REFERENCES departments (ID)
       ON DELETE CASCADE
       ON UPDATE CASCADE
+
+ALTER TABLE grade
+ADD CONSTRAINT FK_employee FOREIGN KEY (id)
+      REFERENCES employees (ID)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
